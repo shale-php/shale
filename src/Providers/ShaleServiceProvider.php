@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Bagwaa\ShaleAi\Providers;
+namespace Shale\Shale\Providers;
 
 use Aws\BedrockRuntime\BedrockRuntimeClient;
-use Bagwaa\ShaleAi\ShaleCore;
+use Shale\Shale\ShaleCore;
 use Illuminate\Support\ServiceProvider;
 
 class ShaleServiceProvider extends ServiceProvider

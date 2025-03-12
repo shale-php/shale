@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bagwaa\ShaleAi;
+namespace Shale\Shale;
 
 use Aws\BedrockRuntime\BedrockRuntimeClient;
 

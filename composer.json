@@ -1,26 +1,36 @@
 {
-    "name": "bagwaa/shale-ai",
+    "name": "shale-php/shale",
     "description": "A package for interacting with the Amazon Bedrock service",
-    "require": {
-        "aws/aws-sdk-php": "^3.342"
-    },
-    "require-dev": {
-        "pestphp/pest": "^3.7",
-        "laravel/pint": "^1.21"
-    },
+    "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Bagwaa\\ShaleAi\\": "src/"
-        }
+            "Shale\\Shale\\": "src/",
+            "Tests\\": "tests/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "require": {
+        "php": "^8.3",
+        "aws/aws-sdk-php": "^3.342",
+        "laravel/framework": "^12.0"
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.7",
+        "laravel/pint": "^1.21",
+        "orchestra/testbench": "10.x-dev",
+        "pestphp/pest-plugin-faker": "3.x-dev",
+        "pestphp/pest-plugin-laravel": "3.x-dev"
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Bagwaa\\ShaleAi\\Providers\\ShaleServiceProvider"
+                "Shale\\Shale\\Providers\\ShaleServiceProvider"
             ],
             "aliases": {
-                "Shale": "Bagwaa\\ShaleAi\\Facades\\ShaleFacade"
+                "Shale": "Shale\\Shale\\Facades\\ShaleFacade"
             }
         }
     },

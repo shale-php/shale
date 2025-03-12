@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bagwaa\ShaleAi\Facades;
+namespace Shale\Shale\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

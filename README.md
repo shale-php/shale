@@ -1,3 +1,40 @@
 # Shale
 
-Shale is an addon to interact with AWS Bedrock
+Shale is a package to interact with AWS Bedrock, a service that provides a way to interact with LLMs (Large Language Models) in a secure and scalable way within the AWS infrastructure. You can learn more about Amazon Bedrock [here](https://aws.amazon.com/bedrock/).
+
+## Installation 
+
+You can install the package via composer:
+
+```bash
+composer require shale-php/shale
+```
+
+This will auto discover the package and you can start using it straight away.
+
+## Usage
+
+First make sure you have the following environment variables set in your Laravel application:
+
+```bash
+AWS_DEFAULT_REGION=
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_BEDROCK_MODEL_ID=
+```
+
+Next make sure you have requested access to the bedrock models you want to use in your region within your AWS console.
+
+You can then use the following code to interact with the bedrock model:
+
+```php
+$response = Shale::prompt("Give me a list of three famous people you admire.");
+```
+
+## Authors
+
+This library was created by [Richard Bagshaw](https://www.richardbagshaw.co.uk).
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
