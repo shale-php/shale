@@ -1,0 +1,28 @@
+{
+    "name": "bagwaa/shale-ai",
+    "description": "A package for interacting with the Amazon Bedrock service",
+    "require": {
+        "aws/aws-sdk-php": "^3.342"
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.7",
+        "laravel/pint": "^1.21"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Bagwaa\\ShaleAi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Richard Bagshaw",
+            "email": "richard@bagshaw.co.uk"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
