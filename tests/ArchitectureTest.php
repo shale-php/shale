@@ -9,7 +9,9 @@ describe('Pest Architecture Presets', function (): void {
         ->preset()
         ->laravel();
 
-    arch('Security')->preset()->security();
+    arch('Security')
+        ->preset()
+        ->security();
 });
 
 arch()->expect('Bagwaa\ShaleAi')
