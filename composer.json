@@ -14,6 +14,16 @@
             "Bagwaa\\ShaleAi\\": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bagwaa\\ShaleAi\\Providers\\ShaleServiceProvider"
+            ],
+            "aliases": {
+                "Shale": "Bagwaa\\ShaleAi\\Facades\\ShaleFacade"
+            }
+        }
+    },
     "authors": [
         {
             "name": "Richard Bagshaw",
@@ -24,5 +34,11 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
+    },
+    "minimum-stability": "dev",
+    "scripts": {
+        "post-install-cmd": [
+            "@php artisan vendor:publish --tag=shale-config"
+        ]
     }
 }
