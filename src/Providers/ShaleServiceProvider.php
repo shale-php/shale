@@ -10,9 +10,9 @@ use Shale\Shale\ShaleCore;
 
 class ShaleServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
-        $this->app->singleton('shale', function () {
+        $this->app->singleton('shale', function (): \Shale\Shale\ShaleCore {
             $config = [
                 'region' => config('shale.aws_region'),
                 'version' => 'latest',
@@ -30,7 +30,7 @@ class ShaleServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../../config/shale.php', 'shale');
     }
 
-    public function boot()
+    public function boot(): void
     {
         if (! file_exists(config_path('shale.php'))) {
             $this->publishes([

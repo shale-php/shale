@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aff831b695eaff87c079f11cdaa11c2c",
+    "content-hash": "257915c89fd210e9df6b82468779f01c",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -8065,6 +8065,65 @@
             "time": "2025-02-19T13:28:12+00:00"
         },
         {
+            "name": "phpstan/phpstan",
+            "version": "2.1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpstan.git",
+                "reference": "7dd7b143ef850a1dc978d4c5880e4c3346c4cc86"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/7dd7b143ef850a1dc978d4c5880e4c3346c4cc86",
+                "reference": "7dd7b143ef850a1dc978d4c5880e4c3346c4cc86",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0"
+            },
+            "conflict": {
+                "phpstan/phpstan-shim": "*"
+            },
+            "default-branch": true,
+            "bin": [
+                "phpstan",
+                "phpstan.phar"
+            ],
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHPStan - PHP Static Analysis Tool",
+            "keywords": [
+                "dev",
+                "static analysis"
+            ],
+            "support": {
+                "docs": "https://phpstan.org/user-guide/getting-started",
+                "forum": "https://github.com/phpstan/phpstan/discussions",
+                "issues": "https://github.com/phpstan/phpstan/issues",
+                "security": "https://github.com/phpstan/phpstan/security/policy",
+                "source": "https://github.com/phpstan/phpstan-src"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/ondrejmirtes",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/phpstan",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-03-12T16:06:33+00:00"
+        },
+        {
             "name": "phpunit/php-code-coverage",
             "version": "11.0.x-dev",
             "source": {
@@ -8567,6 +8626,66 @@
                 "source": "https://github.com/bobthecow/psysh/tree/main"
             },
             "time": "2025-03-03T13:46:51+00:00"
+        },
+        {
+            "name": "rector/rector",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rectorphp/rector.git",
+                "reference": "564386282d0dcf6a54afc77dc0e36003f12ffeee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/564386282d0dcf6a54afc77dc0e36003f12ffeee",
+                "reference": "564386282d0dcf6a54afc77dc0e36003f12ffeee",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0",
+                "phpstan/phpstan": "^2.1.8"
+            },
+            "conflict": {
+                "rector/rector-doctrine": "*",
+                "rector/rector-downgrade-php": "*",
+                "rector/rector-phpunit": "*",
+                "rector/rector-symfony": "*"
+            },
+            "suggest": {
+                "ext-dom": "To manipulate phpunit.xml via the custom-rule command"
+            },
+            "default-branch": true,
+            "bin": [
+                "bin/rector"
+            ],
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Instant Upgrade and Automated Refactoring of any PHP code",
+            "keywords": [
+                "automation",
+                "dev",
+                "migration",
+                "refactoring"
+            ],
+            "support": {
+                "issues": "https://github.com/rectorphp/rector/issues",
+                "source": "https://github.com/rectorphp/rector/tree/main"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/tomasvotruba",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-03-12T15:15:22+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -9870,7 +9989,8 @@
     "stability-flags": {
         "orchestra/testbench": 20,
         "pestphp/pest-plugin-faker": 20,
-        "pestphp/pest-plugin-laravel": 20
+        "pestphp/pest-plugin-laravel": 20,
+        "rector/rector": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

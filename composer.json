@@ -22,7 +22,8 @@
         "laravel/pint": "^1.21",
         "orchestra/testbench": "10.x-dev",
         "pestphp/pest-plugin-faker": "3.x-dev",
-        "pestphp/pest-plugin-laravel": "3.x-dev"
+        "pestphp/pest-plugin-laravel": "3.x-dev",
+        "rector/rector": "dev-main"
     },
     "extra": {
         "laravel": {

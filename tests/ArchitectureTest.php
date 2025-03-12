@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 describe('Pest Architecture Presets', function (): void {
     arch('PHP')
         ->preset()
