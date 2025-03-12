@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Shale\Shale\Providers;
 
 use Aws\BedrockRuntime\BedrockRuntimeClient;
-use Shale\Shale\ShaleCore;
 use Illuminate\Support\ServiceProvider;
+use Shale\Shale\ShaleCore;
 
 class ShaleServiceProvider extends ServiceProvider
 {
@@ -32,7 +32,7 @@ class ShaleServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        if (!file_exists(config_path('shale.php'))) {
+        if (! file_exists(config_path('shale.php'))) {
             $this->publishes([
                 __DIR__ . '/../../config/shale.php' => config_path('shale.php'),
             ], 'shale-config');

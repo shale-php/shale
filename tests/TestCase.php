@@ -2,8 +2,8 @@
 
 namespace Tests;
 
-use Orchestra\Testbench\TestCase as BaseTestCase;
 use Orchestra\Testbench\Concerns\WithWorkbench;
+use Orchestra\Testbench\TestCase as BaseTestCase;
 use Shale\Shale\Facades\ShaleFacade as Shale;
 use Shale\Shale\Providers\ShaleServiceProvider;
 
