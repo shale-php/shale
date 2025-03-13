@@ -5,36 +5,35 @@ declare(strict_types=1);
 namespace Shale\Shale;
 
 use Aws\BedrockRuntime\BedrockRuntimeClient;
+use Shale\Shale\Interfaces\AiModelInterface;
 
 class ShaleCore
 {
+    protected AiModelInterface $model;
+
+    protected string $modelId;
+
     public function __construct(
         protected BedrockRuntimeClient $client,
-        protected string $modelId
     ) {
         //
     }
 
+    public function using(AiModelInterface $model): self
+    {
+        $this->model = $model;
+
+        $this->modelId = $model->getModelId();
+
+        return $this;
+    }
+
     public function prompt(string $message): string
     {
-        $body = [
-            'anthropic_version' => 'bedrock-2023-05-31',
-            'max_tokens' => 512,
-            'temperature' => 0.5,
-            'messages' => [
-                [
-                    'role' => 'user',
-                    'content' => $message,
-                ],
-            ],
-        ];
+        $this->model->setMessage($message);
 
         try {
-            $response = $this->client->invokeModel([
-                'contentType' => 'application/json',
-                'modelId' => $this->modelId,
-                'body' => json_encode($body),
-            ]);
+            $response = $this->client->invokeModel($this->model->getConfiguration());
         } catch (\Exception $e) {
             return 'Error: ' . $e->getMessage();
         }

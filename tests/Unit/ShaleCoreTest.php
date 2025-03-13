@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Aws\BedrockRuntime\BedrockRuntimeClient;
+use Shale\Shale\AiModels\Claude;
 use Shale\Shale\ShaleCore;
 
 it('can prompt the model and get a response', function (): void {
@@ -18,9 +19,13 @@ it('can prompt the model and get a response', function (): void {
         ]),
     ]);
 
-    $core = new ShaleCore($client, 'model-id');
+    $core = new ShaleCore($client);
 
-    $response = $core->prompt('What is the capital of France?');
+    $response = $core
+        ->using(
+            Claude::make()
+        )
+        ->prompt('What is the capital of France?');
 
     expect($response)->toBe('The capital of France is Paris.');
 });
@@ -31,9 +36,13 @@ it('can handle an error when invoking the model', function (): void {
     $client->shouldReceive('invokeModel')
         ->andThrow(new Exception('Model not found'));
 
-    $core = new ShaleCore($client, 'model-id');
+    $core = new ShaleCore($client);
 
-    $response = $core->prompt('What is the capital of France?');
+    $response = $core
+        ->using(
+            Claude::make()
+        )
+        ->prompt('What is the capital of France?');
 
     expect($response)->toBe('Error: Model not found');
 });
