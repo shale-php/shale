@@ -10,6 +10,7 @@ parameters:
 
     ignoreErrors:
         - '#type has no value type specified in iterable type array#'
+        - '#with no value type specified in iterable type#'
 #
 #    excludePaths:
 #        - ./*/*/FileToBeExcluded.php

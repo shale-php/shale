@@ -38,13 +38,13 @@ class ShaleCore
     public function execute(): string
     {
         try {
-            $response = $this->client->invokeModel($this->model->getConfiguration());
+            $result = $this->client->invokeModel(
+                $this->model->getConfiguration()
+            );
         } catch (\Exception $e) {
             return 'Error: ' . $e->getMessage();
         }
 
-        $result = json_decode((string) $response['body']);
-
-        return $result->content[0]->text ?? '';
+        return $this->model->parseResult($result);
     }
 }

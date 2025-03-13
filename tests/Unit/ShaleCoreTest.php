@@ -3,13 +3,14 @@
 declare(strict_types=1);
 
 use Aws\BedrockRuntime\BedrockRuntimeClient;
+use Aws\Result;
 use Shale\Shale\AiModels\Claude3;
 use Shale\Shale\ShaleCore;
 
-it('can prompt the model and get a response', function (): void {
+it('can prompt the model and get a response from the Claude3 model', function (): void {
     $client = Mockery::mock(BedrockRuntimeClient::class);
 
-    $client->shouldReceive('invokeModel')->andReturn([
+    $client->shouldReceive('invokeModel')->andReturn(new Result([
         'body' => json_encode([
             'content' => [
                 [
@@ -17,7 +18,7 @@ it('can prompt the model and get a response', function (): void {
                 ],
             ],
         ]),
-    ]);
+    ]));
 
     $core = new ShaleCore($client);
 
@@ -31,7 +32,7 @@ it('can prompt the model and get a response', function (): void {
     expect($response)->toBe('The capital of France is Paris.');
 });
 
-it('can handle an error when invoking the model', function (): void {
+it('can handle an error when invoking the Claude3 model', function (): void {
     $client = Mockery::mock(BedrockRuntimeClient::class);
 
     $client->shouldReceive('invokeModel')

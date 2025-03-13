@@ -7,21 +7,22 @@ namespace Shale\Shale\AiModels;
 use Aws\Result;
 use Shale\Shale\Interfaces\AiModelInterface;
 
-class Claude3 implements AiModelInterface
+class AI21LabsJamba15Mini implements AiModelInterface
 {
     protected array $configuration = [
+        'modelId' => 'ai21.jamba-1-5-mini-v1:0',
         'contentType' => 'application/json',
-        'modelId' => 'anthropic.claude-3-haiku-20240307-v1:0',
+        'accept' => 'application/json',
         'body' => [
-            'anthropic_version' => 'bedrock-2023-05-31',
-            'max_tokens' => 512,
-            'temperature' => 0.5,
             'messages' => [
                 [
                     'role' => 'user',
                     'content' => '',
                 ],
             ],
+            'max_tokens' => 1000,
+            'top_p' => 0.8,
+            'temperature' => 0.7,
         ],
     ];
 
@@ -57,6 +58,6 @@ class Claude3 implements AiModelInterface
     {
         $result = json_decode((string) $result['body']);
 
-        return $result->content[0]->text ?? '';
+        return $result->choices[0]->message->content ?? '';
     }
 }
