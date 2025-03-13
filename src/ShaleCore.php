@@ -26,9 +26,7 @@ class ShaleCore
 
     public function prompt(string $message): self
     {
-        if (! isset($this->model)) {
-            throw new \Exception('Model not set');
-        }
+        $this->checkModelSet();
 
         $this->model->setMessage($message);
 
@@ -37,13 +35,8 @@ class ShaleCore
 
     public function execute(): string
     {
-        if (! isset($this->model)) {
-            throw new \Exception('Model not set');
-        }
-
-        if (! $this->model->isMessageSet()) {
-            throw new \Exception('Message not set');
-        }
+        $this->checkModelSet();
+        $this->checkMessageSet();
 
         try {
             $result = $this->client->invokeModel(
@@ -54,5 +47,19 @@ class ShaleCore
         }
 
         return $this->model->parseResult($result);
+    }
+
+    private function checkModelSet(): void
+    {
+        if (! isset($this->model)) {
+            throw new \Exception('Model not set');
+        }
+    }
+
+    private function checkMessageSet(): void
+    {
+        if (! $this->model->isMessageSet()) {
+            throw new \Exception('Message not set');
+        }
     }
 }

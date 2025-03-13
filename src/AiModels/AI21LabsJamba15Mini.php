@@ -38,11 +38,6 @@ class AI21LabsJamba15Mini implements AiModelInterface
         return $this->configuration;
     }
 
-    public function getModelId(): string
-    {
-        return $this->configuration['modelId'];
-    }
-
     public function setMessage(string $message): void
     {
         $this->configuration['body']['messages'][0]['content'] = $message;
