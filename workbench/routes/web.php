@@ -1,12 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Shale\Shale\AiModels\Claude;
+use Workbench\App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    $response = Shale::using(
-        Claude::make()
-    )->prompt('What is the capital of France?');
-
-    echo $response;
-});
+Route::get('/', [HomeController::class, 'index']);
