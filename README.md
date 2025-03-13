@@ -28,7 +28,11 @@ Next make sure you have requested access to the bedrock models you want to use i
 You can then use the following code to interact with the bedrock model:
 
 ```php
-$response = Shale::prompt("Give me a list of three famous people you admire.");
+$text = Shale::using(Claude3::make())
+    ->prompt('What is the capital of France?')
+    ->execute();
+
+// Output: The capital of France is Paris.
 ```
 
 ## Authors
