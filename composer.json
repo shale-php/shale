@@ -68,7 +68,9 @@
         ],
         "test": [
             "@clear",
-            "@php vendor/bin/pest"
+            "@php vendor/bin/pest",
+            "@php vendor/bin/pint",
+            "@php vendor/bin/rector"
         ]
     },
     "autoload-dev": {

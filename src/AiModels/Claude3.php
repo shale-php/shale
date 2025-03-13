@@ -6,7 +6,7 @@ namespace Shale\Shale\AiModels;
 
 use Shale\Shale\Interfaces\AiModelInterface;
 
-class Claude implements AiModelInterface
+class Claude3 implements AiModelInterface
 {
     protected array $configuration = [
         'contentType' => 'application/json',

@@ -28,10 +28,15 @@ class ShaleCore
         return $this;
     }
 
-    public function prompt(string $message): string
+    public function prompt(string $message): self
     {
         $this->model->setMessage($message);
 
+        return $this;
+    }
+
+    public function execute(): string
+    {
         try {
             $response = $this->client->invokeModel($this->model->getConfiguration());
         } catch (\Exception $e) {
