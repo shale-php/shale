@@ -10,6 +10,12 @@ You can install the package via composer:
 composer require shale-php/shale
 ```
 
+Next, publish the configuration file:
+
+```bash
+php artisan vendor:publish --tag=shale-config
+```
+
 This will auto discover the package and you can start using it straight away.
 
 ## Usage
