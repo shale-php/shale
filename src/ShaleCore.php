@@ -11,8 +11,6 @@ class ShaleCore
 {
     protected AiModelInterface $model;
 
-    protected string $modelId;
-
     public function __construct(
         protected BedrockRuntimeClient $client,
     ) {
@@ -23,13 +21,15 @@ class ShaleCore
     {
         $this->model = $model;
 
-        $this->modelId = $model->getModelId();
-
         return $this;
     }
 
     public function prompt(string $message): self
     {
+        if (! isset($this->model)) {
+            throw new \Exception('Model not set');
+        }
+
         $this->model->setMessage($message);
 
         return $this;
@@ -37,6 +37,14 @@ class ShaleCore
 
     public function execute(): string
     {
+        if (! isset($this->model)) {
+            throw new \Exception('Model not set');
+        }
+
+        if (! $this->model->isMessageSet()) {
+            throw new \Exception('Message not set');
+        }
+
         try {
             $result = $this->client->invokeModel(
                 $this->model->getConfiguration()

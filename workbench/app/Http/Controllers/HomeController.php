@@ -15,12 +15,14 @@ class HomeController extends Controller
 {
     public function index(): JsonResponse
     {
+        $question = 'What is the capital of France?';
+
         $claudeReply = Shale::using(Claude3::make())
-            ->prompt('What is the capital of France?')
+            ->prompt($question)
             ->execute();
 
         $ai21LabsJurassic2Reply = Shale::using(AI21LabsJamba15Mini::make())
-            ->prompt('What is the capital of France?')
+            ->prompt($question)
             ->execute();
 
         return response()->json([

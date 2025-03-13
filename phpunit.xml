@@ -14,5 +14,9 @@
             <directory suffix=".php">./app</directory>
             <directory suffix=".php">./src</directory>
         </include>
+        <exclude>
+            <directory suffix=".php">src/Facades</directory>
+            <directory suffix=".php">src/Providers</directory>
+        </exclude>
     </source>
 </phpunit>

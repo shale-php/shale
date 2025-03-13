@@ -25,12 +25,6 @@ class Claude3 implements AiModelInterface
         ],
     ];
 
-    private function __construct()
-    {
-        // private constructor to prevent instantiation outside
-        // of the make method.
-    }
-
     public static function make(): self
     {
         return new self;
@@ -51,6 +45,11 @@ class Claude3 implements AiModelInterface
     public function setMessage(string $message): void
     {
         $this->configuration['body']['messages'][0]['content'] = $message;
+    }
+
+    public function isMessageSet(): bool
+    {
+        return ! empty($this->configuration['body']['messages'][0]['content']);
     }
 
     public function parseResult(Result $result): string

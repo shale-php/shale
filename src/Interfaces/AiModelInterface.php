@@ -15,4 +15,6 @@ interface AiModelInterface
     public function setMessage(string $message): void;
 
     public function parseResult(Result $result): string;
+
+    public function isMessageSet(): bool;
 }
