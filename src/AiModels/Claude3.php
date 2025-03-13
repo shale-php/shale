@@ -35,9 +35,6 @@ class Claude3 implements AiModelInterface
         return new self;
     }
 
-    /**
-     * @return array<string, mixed>
-     */
     public function getConfiguration(): array
     {
         $this->configuration['body'] = json_encode($this->configuration['body']);
