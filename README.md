@@ -43,6 +43,8 @@ $claudeReply = Shale::using(Claude3::make())
 $ai21LabsJurassic2Reply = Shale::using(AI21LabsJamba15Mini::make())
     ->prompt($question)
     ->execute();
+
+// The capital of France is Paris.
 ```
 
 ## Authors
