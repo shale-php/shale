@@ -6,6 +6,9 @@ namespace Shale\Shale\Interfaces;
 
 interface AiModelInterface
 {
+    /**
+     * @return array<string, mixed>
+     */
     public function getConfiguration(): array;
 
     public function getModelId(): string;

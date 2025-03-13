@@ -1,0 +1,15 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/nesbot/carbon/extension.neon
+
+parameters:
+    paths:
+        - src/
+
+    level: 8
+
+    ignoreErrors:
+        - '#type has no value type specified in iterable type array#'
+#
+#    excludePaths:
+#        - ./*/*/FileToBeExcluded.php

@@ -32,9 +32,12 @@ class Claude3 implements AiModelInterface
 
     public static function make(): self
     {
-        return new static;
+        return new self;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getConfiguration(): array
     {
         $this->configuration['body'] = json_encode($this->configuration['body']);

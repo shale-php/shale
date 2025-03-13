@@ -24,7 +24,7 @@ class ShaleServiceProvider extends ServiceProvider
 
             $client = new BedrockRuntimeClient($config);
 
-            return new ShaleCore($client, config('shale.aws_bedrock_model_id'));
+            return new ShaleCore($client);
         });
 
         $this->mergeConfigFrom(__DIR__ . '/../../config/shale.php', 'shale');

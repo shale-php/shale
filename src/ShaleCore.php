@@ -44,8 +44,7 @@ class ShaleCore
         }
 
         $result = json_decode((string) $response['body']);
-        $content = $result->content[0]->text ?? '';
 
-        return $content ?? 'No response from model';
+        return $result->content[0]->text ?? '';
     }
 }
