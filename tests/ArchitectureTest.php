@@ -16,6 +16,6 @@ describe('Pest Architecture Presets', function (): void {
         ->security();
 });
 
-arch()->expect('Bagwaa\ShaleAi')
+arch()->expect('Shale\Shale')
     ->toUseStrictTypes()
     ->not->toUse(['die', 'dd', 'dump']);
