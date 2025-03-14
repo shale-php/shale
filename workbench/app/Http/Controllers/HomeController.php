@@ -21,13 +21,13 @@ class HomeController extends Controller
             ->prompt($question)
             ->execute();
 
-        $ai21LabsJurassic2Reply = Shale::using(AI21LabsJamba15Mini::make())
+        $ai21LabsReply = Shale::using(AI21LabsJamba15Mini::make())
             ->prompt($question)
             ->execute();
 
         return response()->json([
             'Claude3' => $claudeReply,
-            'AI21LabsJurassic2' => $ai21LabsJurassic2Reply,
+            'AI21Labs' => $ai21LabsReply,
         ], Response::HTTP_OK);
     }
 }
