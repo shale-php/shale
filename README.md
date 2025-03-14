@@ -26,7 +26,6 @@ First make sure you have the following environment variables set in your Laravel
 AWS_DEFAULT_REGION=
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
-AWS_BEDROCK_MODEL_ID=
 ```
 
 Next make sure you have requested access to the bedrock models you want to use in your region within your AWS console.
@@ -40,7 +39,7 @@ $claudeReply = Shale::using(Claude3::make())
     ->prompt($question)
     ->execute();
 
-$ai21LabsJurassic2Reply = Shale::using(AI21LabsJamba15Mini::make())
+$AI21LabsReply = Shale::using(AI21LabsJamba15Mini::make())
     ->prompt($question)
     ->execute();
 
