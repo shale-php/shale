@@ -6,6 +6,8 @@ use Aws\BedrockRuntime\BedrockRuntimeClient;
 use Aws\Result;
 use Shale\Shale\AiModels\AI21LabsJamba15Mini;
 use Shale\Shale\AiModels\Claude3;
+use Shale\Shale\Exceptions\AiMessageNotSetException;
+use Shale\Shale\Exceptions\AiModelNotSetException;
 use Shale\Shale\ShaleCore;
 
 describe('ShaleCore', function (): void {
@@ -15,7 +17,7 @@ describe('ShaleCore', function (): void {
         $core = new ShaleCore($client);
 
         $core->prompt('What is the capital of France?')->execute();
-    })->throws(Exception::class, 'Model not set');
+    })->throws(AiModelNotSetException::class, 'Model not set');
 });
 
 describe('ShaleCore: Claude3', function (): void {
@@ -44,24 +46,6 @@ describe('ShaleCore: Claude3', function (): void {
         expect($response)->toBe('The capital of France is Paris.');
     });
 
-    it('can handle an error when invoking the Claude3 model', function (): void {
-        $client = Mockery::mock(BedrockRuntimeClient::class);
-
-        $client->shouldReceive('invokeModel')
-            ->andThrow(new Exception('Model not found'));
-
-        $core = new ShaleCore($client);
-
-        $response = $core
-            ->using(
-                Claude3::make()
-            )
-            ->prompt('What is the capital of France?')
-            ->execute();
-
-        expect($response)->toBe('Error: Model not found');
-    });
-
     it('can throw an exception when the message is not set', function (): void {
         $client = Mockery::mock(BedrockRuntimeClient::class);
 
@@ -70,7 +54,7 @@ describe('ShaleCore: Claude3', function (): void {
         $core->using(
             Claude3::make()
         )->execute();
-    })->throws(Exception::class, 'Message not set');
+    })->throws(AiMessageNotSetException::class, 'Message not set');
 });
 
 describe('ShaleCore: AI21LabsJamba15Mini', function (): void {
@@ -101,24 +85,6 @@ describe('ShaleCore: AI21LabsJamba15Mini', function (): void {
         expect($response)->toBe('The capital of France is Paris.');
     });
 
-    it('can handle an error when invoking the AI21LabsJamba15Mini model', function (): void {
-        $client = Mockery::mock(BedrockRuntimeClient::class);
-
-        $client->shouldReceive('invokeModel')
-            ->andThrow(new Exception('Model not found'));
-
-        $core = new ShaleCore($client);
-
-        $response = $core
-            ->using(
-                AI21LabsJamba15Mini::make()
-            )
-            ->prompt('What is the capital of France?')
-            ->execute();
-
-        expect($response)->toBe('Error: Model not found');
-    });
-
     it('can throw an exception when the message is not set', function (): void {
         $client = Mockery::mock(BedrockRuntimeClient::class);
 
@@ -127,5 +93,5 @@ describe('ShaleCore: AI21LabsJamba15Mini', function (): void {
         $core->using(
             AI21LabsJamba15Mini::make()
         )->execute();
-    })->throws(Exception::class, 'Message not set');
+    })->throws(AiMessageNotSetException::class, 'Message not set');
 });

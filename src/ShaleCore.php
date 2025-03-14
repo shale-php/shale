@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Shale\Shale;
 
 use Aws\BedrockRuntime\BedrockRuntimeClient;
+use Shale\Shale\Exceptions\AiMessageNotSetException;
+use Shale\Shale\Exceptions\AiModelNotSetException;
 use Shale\Shale\Interfaces\AiModelInterface;
 
 class ShaleCore
@@ -38,13 +40,9 @@ class ShaleCore
         $this->checkModelSet();
         $this->checkMessageSet();
 
-        try {
-            $result = $this->client->invokeModel(
-                $this->model->getConfiguration()
-            );
-        } catch (\Exception $e) {
-            return 'Error: ' . $e->getMessage();
-        }
+        $result = $this->client->invokeModel(
+            $this->model->getConfiguration()
+        );
 
         return $this->model->parseResult($result);
     }
@@ -52,14 +50,14 @@ class ShaleCore
     private function checkModelSet(): void
     {
         if (! isset($this->model)) {
-            throw new \Exception('Model not set');
+            throw new AiModelNotSetException('Model not set');
         }
     }
 
     private function checkMessageSet(): void
     {
         if (! $this->model->isMessageSet()) {
-            throw new \Exception('Message not set');
+            throw new AiMessageNotSetException('Message not set');
         }
     }
 }
