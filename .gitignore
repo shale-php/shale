@@ -3,4 +3,5 @@ vendor
 node_modules
 .git
 .idea
-
+.DS_Store
+.phpactor.json
